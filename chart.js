@@ -87,8 +87,8 @@ var config = {
         {
             label: "216",
             fill: false,
-            backgroundColor: window.chartColors.yellow,
-            borderColor: window.chartColors.yellow,
+            backgroundColor: window.chartColors.pink,
+            borderColor: window.chartColors.pink,
             data: [
                 randomScalingFactor(),
                 randomScalingFactor(),

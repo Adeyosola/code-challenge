@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script data-require="moment.js@2.7.0" data-semver="2.7.0" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+    <script data-require="jquery" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  </head>
+  <body>
+  <div style="width: 75%;">
+  <ul>
+  <li><input type="checkbox" name="211">211</li>
+  <li><input type="checkbox" name="212">212</li>
+  <li><input type="checkbox" name="213">213</li>
+  <li><input type="checkbox" name="214">214</li>
+  <li><input type="checkbox" name="215">215</li>
+  <li><input type="checkbox" name="216">216</li>
+  </ul>
+    <canvas id="mychart"></canvas>
+  </div>
+  <script>
+      
+    var num = 60;
+    var chartOptions = {
+        showLines: true,
+        animation: {
+          duration: 1000,
+          easing: 'linear'
+        },
+        responsive: true,
+        title: {
+          display: false
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: false
+        },
+        scales: {
+          yAxes: [{
+            id: 'y',
+            position: 'left',
+            gridLines: {
+              drawTicks: false
+            },
+            ticks: {
+              fontSize: 10,
+              max: 80,
+              min: 0,
+              stepSize: 20
+            }
+          }],
+          xAxes: [{
+            scaleLabel: {
+              display: false
+            },
+            gridLines: {
+              display: true,
+              drawTicks: false
+            },
+            ticks: {
+              fontSize: 10,
+              maxRotation: 0,
+              autoSkip: false,
+              callback: function(value) {
+                return value.toString().length > 0 ? value : null;
+              },
+            }
+          }]
+        }
+    };
+var ChartData = {
+  labels: [],
+  datasets: [{
+    label: '211',
+    yAxisID: 'y',
+    fill: false,
+    lineTension: 2.2,
+    backgroundColor: 'rgba(75,192,192,0.4)',
+    borderColor: 'rgba(75,192,192,1)',
+    borderCapStyle: 'round',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderWidth: 2,
+    borderJoinStyle: 'round',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 0,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 0,
+    pointRadius: 0,
+    pointHitRadius: 10,
+    data: [],
+  },{
+    label: '212',
+    yAxisID: 'y',
+    fill: false,
+    lineTension: 2.2,
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    borderCapStyle: 'round',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderWidth: 1,
+    borderJoinStyle: 'round',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 0,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 0,
+    pointRadius: 0,
+    pointHitRadius: 10,
+    data: [],
+  },{
+    label: '213',
+    yAxisID: 'y',
+    fill: false,
+    lineTension: 2.2,
+    backgroundColor: 'rgb(255, 159, 64)',
+    borderColor: 'rgb(255, 159, 64)',
+    borderCapStyle: 'round',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderWidth: 1,
+    borderJoinStyle: 'round',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 0,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 0,
+    pointRadius: 0,
+    pointHitRadius: 10,
+    data: [],
+  },{
+    label: '214',
+    yAxisID: 'y',
+    fill: false,
+    lineTension: 2.2,
+    backgroundColor: 'rgb(54, 162, 235)',
+    borderColor: 'rgb(54, 162, 235)',
+    borderCapStyle: 'round',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderWidth: 1,
+    borderJoinStyle: 'round',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 0,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 0,
+    pointRadius: 0,
+    pointHitRadius: 10,
+    data: [],
+  },{
+    label: '215',
+    yAxisID: 'y',
+    fill: false,
+    lineTension: 2.2,
+    backgroundColor: 'rgb(153, 102, 255)',
+    borderColor: 'rgb(153, 102, 255)',
+    borderCapStyle: 'round',
+    borderDash: [],
+    borderDashOffset: 0.0,
+    borderWidth: 1,
+    borderJoinStyle: 'round',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 0,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 0,
+    pointRadius: 0,
+    pointHitRadius: 10,
+    data: [],
+  },{
+    label: '216',
+    yAxisID: 'y',
+    fill: false,
+    lineTension: 2.2,
+    backgroundColor: 'rgb(219,112,147)',
+    borderColor: 'rgb(219,112,147)',
+    borderCapStyle: 'round',
+    borderWidth: 1,
+    borderJoinStyle: 'round',
+    pointBorderColor: 'rgba(75,192,192,1)',
+    pointBackgroundColor: '#fff',
+    pointBorderWidth: 1,
+    pointHoverRadius: 0,
+    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    pointHoverBorderColor: 'rgba(220,220,220,1)',
+    pointHoverBorderWidth: 0,
+    pointRadius: 0,
+    pointHitRadius: 10,
+    data: [],
+  }]
+};
+for (var i = 0; i < num; i++) {
+  ChartData.labels.push('');
+  ChartData.datasets[0].data.push(null);
+  ChartData.datasets[1].data.push(null);
+  ChartData.datasets[2].data.push(null);
+  ChartData.datasets[3].data.push(null);
+  ChartData.datasets[4].data.push(null);
+  ChartData.datasets[5].data.push(null);
+}
+
+var Chart = new Chart($('#mychart'), {
+  type: 'line',
+  data: ChartData,
+  options: chartOptions
+});
+
+setInterval(function randomdata() {
+      ChartData.datasets[0].data.shift();
+      ChartData.datasets[1].data.shift();
+      ChartData.datasets[2].data.shift();
+      ChartData.datasets[3].data.shift();
+      ChartData.datasets[4].data.shift();
+      ChartData.datasets[5].data.shift();
+      ChartData.labels.shift();
+       var time = new Date().getTime();
+       var secs = moment(time).format('s');
+      var label = '';
+      if (secs % 15 === 0) {
+         label = moment(time).format('HH:mm:ss') ;} 
+        ChartData.datasets[0].data.push(Math.round((Math.random() * 100)));
+        ChartData.datasets[1].data.push(Math.round((Math.random() * 100)));
+        ChartData.datasets[2].data.push(Math.round((Math.random() * 100)));
+        ChartData.datasets[3].data.push(Math.round((Math.random() * 100)));
+        ChartData.datasets[4].data.push(Math.round((Math.random() * 100)));
+        ChartData.datasets[5].data.push(Math.round((Math.random() * 100)));
+       ChartData.labels.push(label);
+        Chart.update();
+      }, 1000);
+
+    </script>
+  </body>
+
+</html>
